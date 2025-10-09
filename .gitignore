@@ -1,41 +1,51 @@
-# Prerequisites
-*.d
+# Build directories
+build/
+build_*/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Linker files
-*.ilk
-
-# Debugger Files
-*.pdb
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
+# Compiled binaries
+reghec
+reghec_multi
 *.exe
 *.out
-*.app
+*.o
+*.a
+*.so
+*.dylib
 
-# debug information files
-*.dwo
+# Third-party libraries (users install these themselves)
+limbo-release*/
+limbo/
+nlopt/
+sophus/
+eigen/
+eigen3/
+pcl/
+boost/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+*.code-workspace
+
+# Output files (generated during runtime)
+*.pcd
+*.png
+handeye_matrix.csv
+registered_merged.pcd
+reghec_result.png
+
+# Logs
+*.log
+
+# OS files
+Thumbs.db
