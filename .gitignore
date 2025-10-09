@@ -38,8 +38,6 @@ boost/
 *.code-workspace
 
 # Output files (generated during runtime)
-*.pcd
-*.png
 handeye_matrix.csv
 registered_merged.pcd
 reghec_result.png
