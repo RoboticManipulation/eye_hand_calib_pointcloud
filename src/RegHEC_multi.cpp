@@ -178,6 +178,28 @@ struct Eval {
 	}
 };
 
+// Natural sort comparator for filenames with numbers
+bool naturalSort(const std::string& a, const std::string& b) {
+	std::filesystem::path pathA(a);
+	std::filesystem::path pathB(b);
+	std::string nameA = pathA.filename().string();
+	std::string nameB = pathB.filename().string();
+	
+	// Extract numbers from filenames
+	std::regex numRegex(R"(\d+)");
+	std::smatch matchA, matchB;
+	
+	if (std::regex_search(nameA, matchA, numRegex) && 
+		std::regex_search(nameB, matchB, numRegex)) {
+		int numA = std::stoi(matchA.str());
+		int numB = std::stoi(matchB.str());
+		return numA < numB;
+	}
+	
+	// Fallback to lexicographic sort if no numbers found
+	return nameA < nameB;
+}
+
 int main(int argc, char** argv) {
 	// Read point clouds
 	std::string path = (argc > 1) ? std::string(argv[1]) : std::string("./data/David");
@@ -199,8 +221,8 @@ int main(int argc, char** argv) {
 		}
 	}
 
-	// Sort files naturally
-	std::sort(pcdFiles.begin(), pcdFiles.end());
+	// Sort files naturally (by numeric order)
+	std::sort(pcdFiles.begin(), pcdFiles.end(), naturalSort);
 
 	if (pcdFiles.size() < 2) {
 		std::cerr << "[error] Need at least 2 point cloud files (view*.pcd). Found: " << pcdFiles.size() << std::endl;

@@ -114,9 +114,8 @@ sudo apt install -y \
 
 This repo supports two modes:
 
-* **Vendored Limbo** (recommended): place Limbo under `limbo-release-2.1/`. CMake will pick it up automatically.
+* **Vendored Limbo** (recommended): place Limbo under `third_party/limbo-release-2.1/` (with its `LICENSE`). CMake will pick it up automatically.
 * **System/External Limbo**: set `LIMBO_DIR` to a local Limbo checkout.
-* **Note: This repo was tested with Limbo 2.1, available on their repo (look for their repo branches).
 
 ```bash
 # External Limbo (only if not vendored)
