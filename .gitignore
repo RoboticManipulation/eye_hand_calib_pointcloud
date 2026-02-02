@@ -21,13 +21,17 @@ reghec_multi
 
 # Third-party libraries (users install these themselves)
 limbo-release*/
-limbo/
+/limbo/
+/third_party/
 nlopt/
 sophus/
 eigen/
 eigen3/
 pcl/
 boost/
+
+# But DO track our custom include files
+!include/
 
 # IDE and editor files
 .vscode/

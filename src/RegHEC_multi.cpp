@@ -467,7 +467,7 @@ int main(int argc, char** argv) {
 			HE.block(0, 3, 3, 1) = HEt;
 
 			Sophus::Vector6d u_1;
-			u_1.head(3) = Sophus::SO3d::log(HER);
+			u_1.head(3) = Sophus::SO3d(HER).log();
 			u_1.tail(3) = HEt;
 			u.conservativeResize(u.rows(), u.cols() + 1);
 			u.col(1) = u_1;
@@ -508,7 +508,7 @@ int main(int argc, char** argv) {
 				HEt = para.tail(3);
 
 				Sophus::Vector6d g_k;
-				g_k.head(3) = Sophus::SO3d::log(HER);
+				g_k.head(3) = Sophus::SO3d(HER).log();
 				g_k.tail(3) = HEt;
 				g.conservativeResize(g.rows(), g.cols() + 1);
 				g.col(g.cols() - 1) = g_k;
