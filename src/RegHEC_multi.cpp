@@ -356,7 +356,9 @@ int main(int argc, char** argv) {
 	Sophus::Vector6d u_next;
 
 	Sophus::Vector6d u_0;
-	u_0.head(3) = Sophus::SO3d::log(HER);
+	// u_0.head(3) = Sophus::SO3d::log(HER);
+	u_0.head(3) = Sophus::SO3d(HER).log();
+
 	u_0.tail(3) = HEt;
 
 	u.conservativeResize(u.rows(), u.cols() + 1);
